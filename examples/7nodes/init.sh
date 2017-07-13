@@ -34,10 +34,10 @@ geth --datadir qdata/dd5 init genesis.json
 
 echo "[*] Configuring node 6"
 mkdir -p qdata/dd6/keystore
-cp keys/key9 qdata/dd4/keystore
+cp keys/key9 qdata/dd6/keystore
 geth --datadir qdata/dd6 init genesis.json
 
 echo "[*] Configuring node 7"
 mkdir -p qdata/dd7/keystore
-cp keys/key8 qdata/dd5/keystore
+cp keys/key8 qdata/dd7/keystore
 geth --datadir qdata/dd7 init genesis.json

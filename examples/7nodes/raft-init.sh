@@ -45,13 +45,14 @@ geth --datadir qdata/dd5 init genesis.json
 echo "[*] Configuring node 6"
 mkdir -p qdata/dd6/{keystore,geth}
 cp raft/static-nodes.json qdata/dd6
-cp keys/key9 qdata/dd4/keystore
+cp keys/key7 qdata/dd6/keystore
+cp keys/key9 qdata/dd6/keystore
 cp raft/nodekey6 qdata/dd6/geth/nodekey
 geth --datadir qdata/dd6 init genesis.json
 
 echo "[*] Configuring node 7"
 mkdir -p qdata/dd7/{keystore,geth}
 cp raft/static-nodes.json qdata/dd7
-cp keys/key8 qdata/dd5/keystore
+cp keys/key8 qdata/dd7/keystore
 cp raft/nodekey7 qdata/dd7/geth/nodekey
 geth --datadir qdata/dd7 init genesis.json

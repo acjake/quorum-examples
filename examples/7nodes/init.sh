@@ -17,8 +17,9 @@ cp keys/key2 qdata/dd2/keystore
 cp keys/key3 qdata/dd2/keystore
 geth --datadir qdata/dd2 init genesis.json
 
-echo "[*] Configuring node 3"
+echo "[*] Configuring node 3 as block maker"
 mkdir -p qdata/dd3/keystore
+cp keys/key6 qdata/dd3/keystore
 geth --datadir qdata/dd3 init genesis.json
 
 echo "[*] Configuring node 4 as voter"
@@ -33,8 +34,10 @@ geth --datadir qdata/dd5 init genesis.json
 
 echo "[*] Configuring node 6"
 mkdir -p qdata/dd6/keystore
+cp keys/key9 qdata/dd4/keystore
 geth --datadir qdata/dd6 init genesis.json
 
 echo "[*] Configuring node 7"
 mkdir -p qdata/dd7/keystore
+cp keys/key8 qdata/dd5/keystore
 geth --datadir qdata/dd7 init genesis.json

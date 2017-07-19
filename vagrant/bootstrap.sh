@@ -26,7 +26,8 @@ echo 'PATH=$PATH:/usr/local/go/bin' >> /home/ubuntu/.bashrc
 # make/install quorum
 git clone https://github.com/jpmorganchase/quorum.git
 pushd quorum >/dev/null
-git checkout tags/v1.1.0
+# git checkout tags/v1.1.0
+git checkout master
 make all
 cp build/bin/geth /usr/local/bin
 cp build/bin/bootnode /usr/local/bin

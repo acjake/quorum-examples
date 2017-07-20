@@ -1,0 +1,40 @@
+diff --git a/internal/ethapi/api.go b/internal/ethapi/api.go
+index 445685c..3ede75a 100644
+--- a/internal/ethapi/api.go
++++ b/internal/ethapi/api.go
+@@ -281,7 +281,16 @@ func (s *PrivateAccountAPI) SendTransaction(ctx context.Context, args SendTxArgs
+ 	if isPrivate {
+ 		data, err = private.P.Send(data, args.PrivateFrom, args.PrivateFor)
+ 		if err != nil {
+-			return common.Hash{}, err
++			for i := 0; i < 5; i++ {
++				time.Sleep(time.Second)
++				data, err = private.P.Send(data, args.PrivateFrom, args.PrivateFor)
++				if err == nil {
++					break
++				}
++			}
++			if err != nil {
++				return common.Hash{}, err
++			}
+ 		}
+ 	}
+ 	if args.To == nil {
+@@ -1225,7 +1234,16 @@ func (s *PublicTransactionPoolAPI) SendTransaction(ctx context.Context, args Sen
+ 	if isPrivate {
+ 		data, err = private.P.Send(data, args.PrivateFrom, args.PrivateFor)
+ 		if err != nil {
+-			return common.Hash{}, err
++			for i := 0; i < 5; i++ {
++				time.Sleep(time.Second)
++				data, err = private.P.Send(data, args.PrivateFrom, args.PrivateFor)
++				if err == nil {
++					break
++				}
++			}
++			if err != nil {
++				return common.Hash{}, err
++			}
+ 		}
+ 	}
+ 	if args.To == nil {

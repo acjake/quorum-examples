@@ -13,12 +13,14 @@ apt-get install -y build-essential unzip libdb-dev libsodium-dev zlib1g-dev libt
 # npm install -g truffle
 
 # install constellation
-# wget -q https://github.com/jpmorganchase/constellation/releases/download/v0.0.1-alpha/ubuntu1604.zip
-# unzip ubuntu1604.zip
-# cp ubuntu1604/constellation-node /usr/local/bin && chmod 0755 /usr/local/bin/constellation-node
-# cp ubuntu1604/constellation-enclave-keygen /usr/local/bin && chmod 0755 /usr/local/bin/constellation-enclave-keygen
-# rm -rf ubuntu1604.zip ubuntu1604
-cp /vagrant/examples/constellation-node /usr/local/bin/constellation-node
+wget -q https://github.com/jpmorganchase/constellation/releases/download/v0.0.1-alpha/ubuntu1604.zip
+unzip ubuntu1604.zip
+cp ubuntu1604/constellation-node /usr/local/bin && chmod 0755 /usr/local/bin/constellation-node
+cp ubuntu1604/constellation-enclave-keygen /usr/local/bin && chmod 0755 /usr/local/bin/constellation-enclave-keygen
+rm -rf ubuntu1604.zip ubuntu1604
+
+# constellation binary with retry
+# cp /vagrant/examples/constellation-node /usr/local/bin/constellation-node
 
 
 # install golang

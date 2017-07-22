@@ -7,3 +7,5 @@ Changes made to the original 7nodes example:
 2. Change constellation config for more robust peer discovery.
 3. Change log file names.
 4. Add convienient shell scripts.
+5. Retry patch for geth client
+6. Pathed constellation binary with retry

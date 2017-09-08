@@ -4,17 +4,17 @@ set -e
 
 GLOBAL_ARGS="--raft --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum"
 
-echo "[*] Starting Constellation nodes"
-nohup constellation-node tm1.conf 2>> qdata/logs/constellation1.log &
-sleep 5
-nohup constellation-node tm2.conf 2>> qdata/logs/constellation2.log &
-nohup constellation-node tm3.conf 2>> qdata/logs/constellation3.log &
-nohup constellation-node tm4.conf 2>> qdata/logs/constellation4.log &
-nohup constellation-node tm5.conf 2>> qdata/logs/constellation5.log &
-nohup constellation-node tm6.conf 2>> qdata/logs/constellation6.log &
-nohup constellation-node tm7.conf 2>> qdata/logs/constellation7.log &
+# echo "[*] Starting Constellation nodes"
+# nohup constellation-node tm1.conf 2>> qdata/logs/constellation1.log &
+# sleep 5
+# nohup constellation-node tm2.conf 2>> qdata/logs/constellation2.log &
+# nohup constellation-node tm3.conf 2>> qdata/logs/constellation3.log &
+# nohup constellation-node tm4.conf 2>> qdata/logs/constellation4.log &
+# nohup constellation-node tm5.conf 2>> qdata/logs/constellation5.log &
+# nohup constellation-node tm6.conf 2>> qdata/logs/constellation6.log &
+# nohup constellation-node tm7.conf 2>> qdata/logs/constellation7.log &
 
-sleep 1
+# sleep 1
 
 echo "[*] Starting node 1"
 PRIVATE_CONFIG=tm1.conf nohup geth --datadir qdata/dd1 $GLOBAL_ARGS --rpcport 22000 --port 21000 --unlock 0 --password passwords.txt --rpccorsdomain "*" 2>>qdata/logs/geth1.log &
@@ -28,18 +28,10 @@ PRIVATE_CONFIG=tm3.conf nohup geth --datadir qdata/dd3 $GLOBAL_ARGS --rpcport 22
 echo "[*] Starting node 4"
 PRIVATE_CONFIG=tm4.conf nohup geth --datadir qdata/dd4 $GLOBAL_ARGS --rpcport 22003 --port 21003 --unlock 0 --password passwords.txt --rpccorsdomain "*" 2>>qdata/logs/geth4.log &
 
-echo "[*] Starting node 5"
-PRIVATE_CONFIG=tm5.conf nohup geth --datadir qdata/dd5 $GLOBAL_ARGS --rpcport 22004 --port 21004 --unlock 0 --password passwords.txt 2>>qdata/logs/geth5.log &
 
-echo "[*] Starting node 6"
-PRIVATE_CONFIG=tm6.conf nohup geth --datadir qdata/dd6 $GLOBAL_ARGS --rpcport 22005 --port 21005 --unlock 0 --password passwords.txt 2>>qdata/logs/geth6.log &
+# echo "[*] Waiting for nodes to start"
+# sleep 10
+# echo "[*] Sending first transaction"
+# PRIVATE_CONFIG=tm1.conf geth --exec 'loadScript("script1.js")' attach ipc:qdata/dd1/geth.ipc
 
-echo "[*] Starting node 7"
-PRIVATE_CONFIG=tm7.conf nohup geth --datadir qdata/dd7 $GLOBAL_ARGS --rpcport 22006 --port 21006 --unlock 0 --password passwords.txt 2>>qdata/logs/geth7.log &
-
-echo "[*] Waiting for nodes to start"
-sleep 10
-echo "[*] Sending first transaction"
-PRIVATE_CONFIG=tm1.conf geth --exec 'loadScript("script1.js")' attach ipc:qdata/dd1/geth.ipc
-
-echo "All nodes configured. See 'qdata/logs' for logs, and run e.g. 'geth attach qdata/dd1/geth.ipc' to attach to the first Geth node"
+# echo "All nodes configured. See 'qdata/logs' for logs, and run e.g. 'geth attach qdata/dd1/geth.ipc' to attach to the first Geth node"
